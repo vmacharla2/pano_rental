@@ -10,11 +10,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  signedIn:boolean= false;
-  id:string=null;
-  username:string= null;
-  role:string= null;
-  
+  signedIn:boolean= true;
+  id:string="Random";
+  username:string= "Random";
+  role:string= 'user';
+
   @Output() toggleSidenav = new EventEmitter<void>();
 
   constructor(private router:Router,private _ps: PropertyService,private _us: UserService) { }
@@ -25,18 +25,18 @@ export class HeaderComponent implements OnInit {
     // if(this.id){
     //   this.signedIn=true;
     // }
-    this._us.loginCheck.subscribe(
-      (data)=>{
-        if(data.loggedIn==false) this.signedIn= false;
-        else {
-          this.signedIn = true;
-          this.role = localStorage.getItem('role');
+    // this._us.loginCheck.subscribe(
+    //   (data)=>{
+    //     if(data.loggedIn==false) this.signedIn= false;
+    //     else {
+    //       this.signedIn = true;
+    //       this.role = localStorage.getItem('role');
 
-          this.id = localStorage.getItem('id');
-          this.username = localStorage.getItem('username')
-        }
-      }
-    )
+    //       this.id = localStorage.getItem('id');
+    //       this.username = localStorage.getItem('username')
+    //     }
+    //   }
+    // )
     this._ps.showOwnerProperties.subscribe()
   }
   logout(){
@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/login']);
       this.signedIn=false;
   }
-  
+
   onToggleSidenav(): void {
     this.toggleSidenav.emit();
   }

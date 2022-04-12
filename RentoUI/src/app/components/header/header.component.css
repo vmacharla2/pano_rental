@@ -1,17 +1,17 @@
 .mat-button:hover,.menu a:hover {
     /* background-color: indianred !important; */
     /* background-color:#3F51B5 !important; */
-    border: 1px solid white;
-    color: white;
+    border: 1px solid black;
+    color:black;
 }
 mat-toolbar{
     padding: 0;
-    background: linear-gradient(
+    /* background: linear-gradient(
       90deg,
       #0f5ceb,
       #5f86f1
-    );
-    color: white;
+    ); */
+    color: black;
 
 }
 
