@@ -1,0 +1,31 @@
+<mat-toolbar  class="w-100">
+    <button mat-icon-button  [hidden]="!signedIn || role=='admin' " (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon >menu</mat-icon>
+      </button>
+        <a mat-button routerLink="/" class="menu" (click)= "handleHome()">
+            <span ><mat-icon  class="home-icon" style="font-size: xxx-larger;display: table-cell;">home</mat-icon></span>
+        </a>
+      <span class="text-center title spacer" style="font-size: xx-large;">Rento Hub</span>
+        <a mat-button routerLink="/signup"  class="menu" *ngIf="!signedIn">Sign Up</a>
+        <a mat-button routerLink="/login"  class="menu" *ngIf="!signedIn">Login</a>
+        <a mat-button routerLink="/login"  class="menu" *ngIf="signedIn && role =='admin'">Logout</a>
+</mat-toolbar>
+<mat-sidenav-container >
+  <mat-sidenav #sidenav [hidden]="!signedIn || role=='admin'" >
+    <mat-nav-list>
+      <a  class="user"   *ngIf=" signedIn && id" mat-list-item><mat-icon>account_circle</mat-icon> Hello, {{username}}</a>
+      <div class="menu">
+        <a  [routerLink]= "['/dashboard',id]" mat-list-item><mat-icon>dashboard_customize</mat-icon>  DashBoard</a>
+        <a  [routerLink]= "['/addnewproperty']" mat-list-item (click)="handleAddNew()"><mat-icon>maps_home_work </mat-icon>Add New Property</a>
+        <a routerLink="#" mat-list-item><mat-icon>lock</mat-icon>  My Account</a>
+        <a  [routerLink]="['/addtenant']" mat-list-item><mat-icon>add_circle_outline</mat-icon>Add Tenant</a>
+        <a  [routerLink]="['/tenantslist']" mat-list-item><mat-icon>tour</mat-icon> Tenants List</a>
+        <a  [routerLink]= "['/propertycontactrequests']" mat-list-item><mat-icon>contact_phone</mat-icon> Contact Requests</a>
+        <a routerLink="#" mat-list-item  *ngIf="signedIn" (click)="logout()"><mat-icon>logout</mat-icon> SignOut</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content ><router-outlet></router-outlet></mat-sidenav-content>
+</mat-sidenav-container>
+
+

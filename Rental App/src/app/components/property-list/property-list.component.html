@@ -1,0 +1,20 @@
+<div class="mt-4  container" *ngIf="propertiesSelected">
+    <div class="row">
+      <div class="col-sm-12  col-md-6 col-lg-4 mb-3" *ngFor="let property of obs| async" matSort>
+        <app-property-card [property]="property"></app-property-card>
+        </div>
+    </div>
+  </div> 
+  <div class="mt-5" *ngIf="!propertiesSelected && !error">
+      <mat-spinner color="primary" [diameter]="70" class="mx-auto"></mat-spinner>
+  </div>
+  <div *ngIf = "error" class="text-center text-info text-primary mt-4">
+    Error while Fetching Properties
+  </div>
+<div *ngIf="filteredEmpty" class="text-center text-info">
+  No search results
+</div>
+<div [hidden] ="!propertiesSelected || filteredEmpty" class="matpage ">
+  <mat-paginator [pageSizeOptions]="[6]" showFirstLastButtons></mat-paginator>
+</div>
+

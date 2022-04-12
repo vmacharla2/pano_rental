@@ -1,0 +1,96 @@
+<div class="row mt-4 pl-2 pr-2 dashboard " *ngIf ="properties">
+   <div class="col-xs-12  col-md-6 col-lg-3 pb-2" >
+      <mat-card [ngClass]="'danger'" >
+          <mat-card-header>
+            <div mat-card-avatar>
+              <mat-icon class="icon-lg">help_outline </mat-icon>
+            </div>
+            <mat-card-title>{{pendingProperties.length}}</mat-card-title>
+            <mat-card-subtitle>Pending properties</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button   class="view" mat-button  (click) ="showPendingProp()">View Details</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-xs-12   col-md-6 col-lg-3 pb-2">
+      <mat-card [ngClass]="'success'" >
+          <mat-card-header>
+            <div mat-card-avatar>
+              <mat-icon class="icon-lg">verified</mat-icon>
+            </div>
+            <mat-card-title>{{verifiedProperties.length}}</mat-card-title>
+            <mat-card-subtitle>Verified properties</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button  class="view" mat-button   (click) ="showVerifiedProp()">View Details</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-3 pb-4" >
+      <mat-card [ngClass]="'info'">
+          <mat-card-header>
+            <div mat-card-avatar>
+              <mat-icon class="icon-lg">houseboat</mat-icon>
+            </div>
+            <mat-card-title>{{vacantProperties.length}}</mat-card-title>
+            <mat-card-subtitle>Vacant properties</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button   class="view"  (click) ="showVacantProp()" mat-button >View Details</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-3 pb-2">
+      <mat-card [ngClass]="'warn'" >
+          <mat-card-header>
+            <div mat-card-avatar>
+              <mat-icon class="icon-lg">no_meeting_room</mat-icon>
+            </div>
+            <mat-card-title>{{rentedProperties.length}}</mat-card-title>
+            <mat-card-subtitle>Rented Properties</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button class="view" mat-button  (click) ="showRentedProp()" >View Details</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+</div>
+<div class="row" [hidden]= "!clicked">
+  <span class="col-xs-12 col-md-6 text-primary text-center heading ">{{viewing}}</span>
+    <mat-form-field  class="col-xs-8 mx-xs-auto col-md-3 filter" >
+      <input  matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div>
+<div class="row  mx-auto data-table"  [hidden]= "!clicked" >
+  <div class="example-container"> 
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >Id </mat-header-cell>
+        <mat-cell *matCellDef="let property"> {{property.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="location">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+        <mat-cell *matCellDef="let property"> {{property.location}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="rent">
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Rent </mat-header-cell>
+        <mat-cell *matCellDef="let property"> {{property.rent}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >State </mat-header-cell>
+        <mat-cell *matCellDef="let property"> {{property.state}} </mat-cell>
+      </ng-container>  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let property; columns: displayedColumns;" (click)="propertyDetails(property)"></mat-row>
+    </mat-table>
+    <div [hidden] ="!clicked" class="matpage">
+      <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+    </div>
+  
+  </div>
+</div>
+<div class="mt-5" *ngIf="!properties && !error">
+  <mat-spinner color="primary" [diameter]="70" class="mx-auto"></mat-spinner>
+</div>
+

@@ -1,0 +1,61 @@
+<mat-card  class="container mt-4">
+    <div class="row  search">
+      <div class="col-sm-6 col-lg-2">
+        <mat-form-field >
+          <input type="search"matInput [matAutocomplete]="auto"
+          (click)="checkPlaceHolder()" placeholder="{{searchPlaceHolder}}" 
+          [(ngModel)]="searchLocation" >
+          <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let location of locations" [value]="location|titlecase">
+            {{location|titlecase}}
+          </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+        <mat-form-field>
+          <input type="search"matInput [matAutocomplete]="types"
+          (click)="pTypePlaceHolder()" placeholder="{{typePlaceHolder}}" 
+          [(ngModel)]="propertyType" >
+          <mat-autocomplete #types="matAutocomplete">
+          <mat-option *ngFor="let type of propertyTypes" [value]="type">
+            {{type}}
+          </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>  
+      </div>
+      <div class="col-sm-6 col-lg-2">
+      <mat-form-field>
+        <input type="text"matInput 
+        [(ngModel)]="minrent" 
+          (click)="pminBudgetPlaceHolder()"
+          placeholder="{{minBudgetPlaceHolder}}">
+      </mat-form-field>  
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <mat-form-field>
+          <input matInput 
+          [(ngModel)]="maxrent" 
+            (click)="pmaxBudgetPlaceHolder()"
+            placeholder="{{maxBudgetPlaceHolder}}">
+        </mat-form-field>
+   
+      </div>
+      <div class="col-sm-12 col-lg-4 mt-lg-4 d-flex justify-content-center">
+        <mat-radio-group [(ngModel)]="sort"  color="primary">
+          <div class="d-flex justify-content-center sort-radio" >
+            Rent:<mat-radio-button value="asc" class="sort">low-high</mat-radio-button>
+            <mat-radio-button value="des">high-low</mat-radio-button>
+          </div>       
+        </mat-radio-group>   
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-4 ">
+    <div  (click)="handleSearch()"  class="col col-md-3 col-lg-2">
+      <button mat-raised-button color="primary">Search<mat-icon class="field-icon">search</mat-icon> </button>
+    </div>
+    <div class="col col-md-3 col-lg-2"  (click)="clearFilters()">
+      <button mat-raised-button color="primary">Clear Filters<mat-icon class="field-icon">filter_alt</mat-icon> </button>
+    </div>
+  </div>
+</mat-card>

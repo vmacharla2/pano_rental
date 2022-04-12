@@ -1,0 +1,52 @@
+<div class="col-xs-12 mt-4  col-md-6 col-lg-3 pb-2" *ngIf ="vProperties" >
+    <mat-card [ngClass]="'danger'" >
+        <mat-card-header>
+          <div mat-card-avatar>
+            <mat-icon class="icon-lg">help_outline </mat-icon>
+          </div>
+          <mat-card-title>{{vProperties.length}}</mat-card-title>
+          <mat-card-subtitle>Verifiable properties</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+          <button   class="view" mat-button  (click) ="showPendingProp()">View Details</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<div class="row  mx-auto data-table mt-4"  [hidden]= "!clicked" >
+    <div class="example-container"> 
+      <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header >Id </mat-header-cell>
+          <mat-cell *matCellDef="let property"> {{property.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="country">
+            <mat-header-cell *matHeaderCellDef mat-sort-header >Country </mat-header-cell>
+            <mat-cell *matCellDef="let property"> {{property.country}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="state">
+            <mat-header-cell *matHeaderCellDef mat-sort-header >State </mat-header-cell>
+            <mat-cell *matCellDef="let property"> {{property.state}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="location">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+          <mat-cell *matCellDef="let property"> {{property.location}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="rent">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > Rent </mat-header-cell>
+          <mat-cell *matCellDef="let property"> {{property.rent}} </mat-cell>
+        </ng-container>  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let property; columns: displayedColumns;" (click)="propertyDetails(property)"></mat-row>
+      </mat-table>
+      <div [hidden] ="!clicked" class="matpage">
+        <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+      </div>
+    
+    </div>
+  </div>
+  <div class="mt-5" *ngIf="!vProperties && error">
+    <mat-spinner color="primary" [diameter]="70" class="mx-auto"></mat-spinner>
+  </div>
+
+  
+    

@@ -1,0 +1,62 @@
+<div class="tenant-form">
+    <mat-card> 
+        <mat-card-title class="header" color="primary">
+            <mat-toolbar color="primary">Add Tenant Details </mat-toolbar>
+        </mat-card-title>    
+        <mat-card-content>
+            <form [formGroup]="tenantForm">
+                <div class="row mt-3">
+                    <mat-form-field  class="full-width">
+                        <mat-label>Property Id</mat-label>
+                        <mat-select formControlName="property_id">
+                            <mat-option *ngFor="let id of pIds" [value]="id">{{id}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="tenantForm.controls.property_id.errors?.required">
+                            Please Select Property Id Of Tenant
+                        </mat-error>
+                    </mat-form-field>
+                </div>      
+                <div class="row mt-3">
+                    <mat-form-field class="full-width">
+                        <mat-label>Tenant name</mat-label>
+                        <input matInput color="primary" formControlName="name" >
+                        <mat-error *ngIf="tenantForm.controls.name.errors?.required">
+                            Please Provide Tenant Name
+                        </mat-error>
+                        <mat-error *ngIf="tenantForm.controls.name.errors?.pattern">
+                            Please Enter Valid Name
+                        </mat-error>
+                    </mat-form-field>      
+                </div>
+                <div class="row mt-3">      
+                    <mat-form-field class="full-width">
+                        <mat-label>Tenant mobile</mat-label>
+                        <input matInput formControlName="mobile">
+                        <mat-error *ngIf="tenantForm.controls.mobile.errors?.required">
+                            Enter Tenant Number
+                        </mat-error>
+                        <mat-error *ngIf="tenantForm.controls.mobile.errors?.pattern">
+                            Please Enter Valid Mobile Number
+                        </mat-error>
+                    </mat-form-field>       
+                </div>
+                <div class="row mt-3">    
+                    <mat-form-field class="full-width">
+                        <mat-label>Tenant mail id </mat-label>
+                        <input  matInput   formControlName ="email">
+                        <mat-error *ngIf="tenantForm.controls.email.errors?.required">
+                            Please Provide Tenant Mail Id
+                        </mat-error>
+                        <mat-error *ngIf="tenantForm.controls.email.errors?.email">
+                            Please Enter Valid Mail 
+                        </mat-error>
+                    </mat-form-field>     
+                </div>      
+            </form> 
+            <div  class="d-flex justify-content-around mt-4">                 
+                <button mat-raised-button color="primary" class="w-25"(click)=reset() >Reset</button>                  
+                <button mat-raised-button color="primary" class=" w-25" (click)="handleSubmit()" >Add</button>                                             
+            </div>
+        </mat-card-content>
+    </mat-card>    
+</div>
