@@ -3,9 +3,9 @@
         <mat-icon >menu</mat-icon>
       </button>
         <a mat-button routerLink="/" class="menu" (click)= "handleHome()">
-            <span ><mat-icon  class="home-icon" style="font-size: xxx-larger;display: table-cell;">home</mat-icon></span>
+            <span ><mat-icon  class="home-icon" style="font-size: xxx-large;display: table-cell;">home</mat-icon></span>
         </a>
-      <span class="text-center title spacer" style="font-size: xx-large;">Rento Hub</span>
+      <span class="text-center title spacer" style="font-size: xx-large;font-family: monospace;">Rento Hub</span>
         <a mat-button routerLink="/signup"  class="menu" *ngIf="!signedIn">Sign Up</a>
         <a mat-button routerLink="/login"  class="menu" *ngIf="!signedIn">Login</a>
         <a mat-button routerLink="/login"  class="menu" *ngIf="signedIn && role =='admin'">Logout</a>
