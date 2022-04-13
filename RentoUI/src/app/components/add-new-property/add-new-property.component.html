@@ -1,0 +1,10 @@
+<div class="row add-prop">
+    <button class="col d-flex justify-content-center align-items-center add" 
+             mat-raised-button color="primary" (click)="openDialog()">
+             Add New Property <mat-icon>add_circle_outline</mat-icon>
+    </button>
+</div>
+<div class=" row d-felx justify-content-center text-primary mt-4"  *ngIf ="!error" >All Your Posted Properties</div>
+<div class="row mt-4">
+    <app-property-list ></app-property-list>
+</div>

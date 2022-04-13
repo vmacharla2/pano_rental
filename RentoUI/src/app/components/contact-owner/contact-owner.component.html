@@ -1,0 +1,59 @@
+<div class="text-primary  mb-4 text-center">please fill your contact information</div>
+<form [formGroup]="contactForm">
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Enter name</mat-label>
+            <input matInput color="primary" formControlName="requester_name" >
+            <mat-error *ngIf="contactForm.controls.requester_name.errors?.required">
+                Please Provide Your Name For Owner
+            </mat-error>
+            <mat-error *ngIf="contactForm.controls.requester_name.errors?.pattern">
+                Please Enter Valid Name
+            </mat-error>
+        </mat-form-field>      
+    </div>
+    <div class="row mt-2">      
+        <mat-form-field>
+            <mat-label>Your Mobile Number</mat-label>
+            <input matInput formControlName="requester_mobile">
+            <mat-error *ngIf="contactForm.controls.requester_mobile.errors?.required">
+                Please Provide Your Contact Number
+            </mat-error>
+            <mat-error *ngIf="contactForm.controls.requester_mobile.errors?.pattern">
+                Please Enter Valid Mobile Number
+            </mat-error>
+        </mat-form-field>       
+    </div>
+    <div class="row mt-2">    
+        <mat-form-field>
+            <mat-label>Enter Your Mail</mat-label>
+            <input  matInput   formControlName ="requester_mail">
+            <mat-error *ngIf="contactForm.controls.requester_mail.errors?.required">
+                Please Provide Your Mail Id
+            </mat-error>
+            <mat-error *ngIf="contactForm.controls.requester_mail.errors?.email">
+                Please Enter Valid Mail 
+            </mat-error>
+        </mat-form-field>     
+    </div>
+    <div class="row mt-2">
+      
+        <mat-form-field>
+            <mat-label>choose Visiting Date</mat-label>
+            <input matInput
+              [matDatepicker]="visitdate"
+              formControlName ="visit_request_date">
+            <mat-datepicker-toggle matSuffix [for]="visitdate"></mat-datepicker-toggle>
+            <mat-datepicker #visitdate></mat-datepicker>
+        </mat-form-field>        
+    </div>          
+</form> 
+<div  class="d-flex justify-content-around mt-4">                 
+    <button mat-raised-button color="primary" class="cancel w-50" (click)="closeDialog()">Cancel</button>                  
+    <button mat-raised-button color="primary" class="sumbit w-50" (click)="handleContactInfo()" >Submit</button>                                             
+</div>
+<!-- 
+<div *ngIf= "req_submitted" class="text-center text-success mt-3">
+    Your Detials Posted Owner Get Back Back To You Soon...
+</div>
+   -->

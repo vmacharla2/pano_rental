@@ -1,0 +1,41 @@
+<div class="row  text-primary d-flex justify-content-center mt-3" *ngIf ="clicked">Visiters Requests to Your Properties</div>
+<div class="row  mx-auto data-table mt-4" [hidden]= "!clicked">
+    <div class="example-container"> 
+      <mat-table [dataSource]="ds" matSort >
+        <ng-container matColumnDef="property_id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header >Property_id</mat-header-cell>
+          <mat-cell *matCellDef="let request"> {{request.property_id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Requester_Name </mat-header-cell>
+          <mat-cell *matCellDef="let request"> {{request.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="mail">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > Requester_Mail </mat-header-cell>
+          <mat-cell *matCellDef="let request">
+            <a [href]="mailto(request.mail, 'I will contact You')">             
+            {{request.mail}} </a></mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="mobile">
+          <mat-header-cell *matHeaderCellDef mat-sort-header >Requester_Mobile</mat-header-cell>
+          <mat-cell *matCellDef="let request"> {{request.mobile}} </mat-cell>
+        </ng-container> 
+        <ng-container matColumnDef="visitdate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header >Visit Date</mat-header-cell>
+            <mat-cell *matCellDef="let request"> {{request.visitdate | date}} </mat-cell>
+        </ng-container> 
+        <!-- <ng-container *ngFor="let col of columns" [matColumnDef]="col">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{col}} </mat-header-cell>
+            <mat-cell *matCellDef="let request">
+                 {{request.col}}
+            </mat-cell>
+          </ng-container> -->
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let request; columns: columns;"></mat-row>
+      </mat-table>
+      <div  class="matpage" [hidden]= "!clicked">
+        <mat-paginator [pageSizeOptions]="[6]" showFirstLastButtons></mat-paginator>
+      </div>   
+    </div>
+</div>
+  

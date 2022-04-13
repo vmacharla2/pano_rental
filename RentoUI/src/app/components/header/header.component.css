@@ -1,0 +1,47 @@
+.mat-button:hover,.menu a:hover {
+    /* background-color: indianred !important; */
+    /* background-color:#3F51B5 !important; */
+    border: 1px solid black;
+    color:black;
+}
+mat-toolbar{
+    padding: 0;
+    /* background: linear-gradient(
+      90deg,
+      #0f5ceb,
+      #5f86f1
+    ); */
+    color: black;
+
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
+.home-icon{
+    position: relative;
+    top:3px
+
+}
+.example-icon {
+    padding: 0 14px;
+  }
+  .mat-icon{
+    margin-right: 10px;
+  }
+
+  .mat-sidenav {
+    width: 200px;
+    height: 2000px !important;
+  }
+  mat-sidenav-content {
+    min-height: 700px !important;
+
+ }
+ .user{
+   cursor: none !important;
+
+
+ }
+
+

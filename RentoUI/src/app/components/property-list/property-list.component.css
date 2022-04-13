@@ -1,0 +1,19 @@
+::ng-deep .mat-paginator-page-size{
+    display: none !important;
+
+}
+/* ::ng-deep .mat-paginator-range-label{
+  background-color:blue;
+  color: white;
+  width: 149px;
+
+}
+mat-paginator{
+    background-color:blue;
+    width: 500px;
+} */
+
+mat-paginator{
+display: flex !important;
+justify-content: center !important;
+}

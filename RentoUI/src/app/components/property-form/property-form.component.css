@@ -1,0 +1,81 @@
+.stepper-label{
+    width: 400px !important;
+}
+.sort{
+    margin-left: 10px !important;
+    margin-right: 10PX !important;
+  }
+@media (max-width:990px){
+.next1{
+    position: relative;
+    margin-top:20px !important ;
+    margin-left: 34%;
+    width: 30%;
+  }
+} 
+.ptype{
+    width: 98%;
+} 
+@media (max-width:375px){
+    .ptype{
+        width: 90%;
+    }
+}
+@media (min-width:990px){
+    .next1{
+        position: relative;
+        top:10px;
+        width: 100px;
+   
+      }
+}
+.next2{
+    position: relative;
+    left: 20px;
+    top:20px;
+    width: 150px;
+}
+.heading{
+    cursor: none;
+}
+.upload-icon{
+    position: relative;
+    top: 7px;
+}
+
+.close-button{
+    float: right;
+    top:0px;
+    right:-10px;
+  }
+ 
+  .close-icon {
+    transition: 1s ease-in-out;
+  }
+  
+  .close-icon:hover {
+    transform: rotate(180deg);
+  }
+ .del-btn {
+     position: relative;
+     top: -40px;
+     z-index: 7;
+
+ }
+ .img-pre {
+     z-index: 3;
+     margin-right: 40px !important;
+ }
+ .mat-form-field{
+   width: 100%;
+ }
+ ::ng-deep .snackbar-style{
+  position: absolute;
+  top:50px;
+  right: -10px;
+  background-color: white;
+  color:rgb(62, 122, 6);
+  font-size: 16px;
+  
+  
+}

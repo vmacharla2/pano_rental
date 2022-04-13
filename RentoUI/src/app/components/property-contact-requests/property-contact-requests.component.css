@@ -1,0 +1,29 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  @media (min-width:1000px){
+    .data-table{
+     width: 75% !important;
+    }
+  } 
+
+
+::ng-deep .mat-paginator-page-size{
+    display: none !important;
+
+}
+mat-paginator{
+display: flex !important;
+justify-content: center !important;
+}
+::ng-deep .mat-sort-header-arrow {
+  
+  opacity: 4 !important;
+  color: white;
+}
+.mat-header-cell {
+    background-color: #6e6262;
+    color: white;
+  }

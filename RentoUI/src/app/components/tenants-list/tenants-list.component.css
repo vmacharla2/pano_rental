@@ -1,0 +1,25 @@
+.mat-header-cell {
+    background-color: #6e6262;
+    color: white;
+  }
+  .filter {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+  .mat-form-field {
+    font-size: 14px;  
+  }
+
+  ::ng-deep .mat-paginator-page-size{
+    display: none !important;
+
+}
+mat-paginator{
+display: flex !important;
+justify-content: center !important;
+}
+::ng-deep .mat-sort-header-arrow {
+  
+  opacity: 4 !important;
+  color: white;
+}
